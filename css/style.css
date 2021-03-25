@@ -1,0 +1,93 @@
+:root {
+	--white: #FEFFFE;
+	--light-green: #57E0C3;
+	--green: #23D5B0;
+	--dark-green: #1DBC9B;
+	--black: #242427;
+	--dist: 200px;
+}
+
+
+html,body {
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	position: relative;
+	font-family: Arial;
+}
+
+/*				TOP HEADER				*/
+
+#top-header {
+	display: grid;
+	grid-template-columns: var(--dist) 1fr var(--dist);
+	height: 60px;
+}
+
+#top-header #logo {
+	background-color: var(--black);
+}
+
+#top-header #search-bar {
+	background-color: var(--black);
+	padding: 10px;
+}
+
+#search-bar form input[type=text] {
+	padding: 10px;
+	font-size: 15px;
+	border: 1px solid var(--dark-green);
+	float: left;
+	width: 80%;
+	background: var(--white);
+	box-sizing: border-box;
+}
+
+#search-bar form button {
+	float: left;
+	width: 20%;
+	padding: 10px;
+	background: var(--green);
+	color: var(--white);
+	font-size: 15px;
+	border: 1px solid var(--dark-green);
+	border-left: none;
+	cursor: pointer;
+}
+
+#search-bar form button:hover {
+	background: var(--dark-green);
+}
+
+#search-bar form::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+#top-header #login {
+	background-color: var(--black);
+}
+
+/*				LOW HEADER				*/
+
+#low-header {
+	display: grid;
+	grid-template-columns: var(--dist) 1fr 1fr 1fr 1fr var(--dist);
+	background-color: var(--black);
+}
+
+#low-header [id^="cat-"] {
+	box-sizing: border-box;
+	padding: 0px 10px 10px 10px;
+	text-align: center;
+}
+#low-header [id^="cat-"] a {
+	font-size: 15px;
+	color: var(--white);
+	text-decoration: none;
+}
