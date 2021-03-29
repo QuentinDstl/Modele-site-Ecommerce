@@ -1,23 +1,43 @@
 :root {
 	--white: #FEFFFE;
-	--light-green: #57E0C3;
-	--green: #23D5B0;
-	--dark-green: #1DBC9B;
+	--color: #5386E4;
 	--black: #242427;
-	--dist: 200px;
+	--dist: 250px;
+}
+
+@font-face {
+	font-family: "Title";
+	src: url("fonts/Plateia Bold.ttf") format('truetype');
+	font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: "Text";
+	src: url("fonts/Adlinnaka-BoldDemo.ttf") format('truetype');
+	font-weight: normal;
+    font-style: normal;
 }
 
 
 html,body {
-	border: 0;
-	font: inherit;
-	font-size: 100%;
-	vertical-align: baseline;
-	margin: 0;
-	padding: 0;
 	height: 100%;
 	position: relative;
-	font-family: Arial;
+	font-family: "Text";
+}
+
+header {
+	box-shadow: 0px -2px 10px var(--black);
+}
+
+button {
+	border: 4px solid var(--black);
+	border-radius: 24px;
+	padding: 10px 20px 10px 20px;
+}
+
+button:hover {
+	background-color: var(--color);
+	border: 4px solid var(--color);
 }
 
 /*				TOP HEADER				*/
@@ -26,21 +46,28 @@ html,body {
 	display: grid;
 	grid-template-columns: var(--dist) 1fr var(--dist);
 	height: 60px;
+	background-color: var(--white);
 }
 
 #top-header #logo {
-	background-color: var(--black);
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#top-header #logo img {
 }
 
 #top-header #search-bar {
-	background-color: var(--black);
-	padding: 10px;
+	background-color: var(--white);
+	margin-top: 20px;
 }
 
 #search-bar form input[type=text] {
 	padding: 10px;
 	font-size: 15px;
-	border: 1px solid var(--dark-green);
+	border: 1px solid var(--color);
 	float: left;
 	width: 80%;
 	background: var(--white);
@@ -48,19 +75,21 @@ html,body {
 }
 
 #search-bar form button {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
 	float: left;
 	width: 20%;
 	padding: 10px;
-	background: var(--green);
+	background: var(--color);
 	color: var(--white);
 	font-size: 15px;
-	border: 1px solid var(--dark-green);
+	border: 1px solid var(--color);
 	border-left: none;
 	cursor: pointer;
 }
 
 #search-bar form button:hover {
-	background: var(--dark-green);
+	background: var(--color);
 }
 
 #search-bar form::after {
@@ -70,7 +99,11 @@ html,body {
 }
 
 #top-header #login {
-	background-color: var(--black);
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--white);
 }
 
 /*				LOW HEADER				*/
@@ -78,16 +111,45 @@ html,body {
 #low-header {
 	display: grid;
 	grid-template-columns: var(--dist) 1fr 1fr 1fr 1fr var(--dist);
-	background-color: var(--black);
+	background-color: var(--white);
 }
 
 #low-header [id^="cat-"] {
+	margin-top: 20px;
+	margin-bottom: 10px;
 	box-sizing: border-box;
-	padding: 0px 10px 10px 10px;
+	padding: 0px 25px 0px 25px;
 	text-align: center;
 }
 #low-header [id^="cat-"] a {
-	font-size: 15px;
-	color: var(--white);
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: var(--black);
+	font-family: "Title";
 	text-decoration: none;
+}
+
+/*				SIGN UP				*/
+
+.flex-wrapper {
+	display: flex;
+}
+
+.signup-form {
+	padding: 20px 50px 20px 50px;
+	margin: auto;
+	background-color: var(--color);
+}
+
+.signup-form h2 {
+	font-family: "Title";
+	font-size: 40px;
+	text-align: center;
+}
+
+.signup-form input[type=text], .signup-form input[type=password] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--black);
 }
