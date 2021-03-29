@@ -91,3 +91,66 @@ html,body {
 	color: var(--white);
 	text-decoration: none;
 }
+
+
+	/*	DIV FOR THE PAGE PROFIL */
+
+#info-clt {
+	float:left;
+	margin-left:9%;
+	margin-top:5%;
+	padding:1%;
+	height:45%;
+	width: 37%;
+	background-color: var(--dark-green);
+}
+
+#info-pmt {
+	float: left;
+	margin-left: 5%;
+	margin-right: 4%;
+	margin-top: 5%;
+	padding: 1%;
+	height: 45%;
+	width: 37%;
+	background-color: var(--dark-green);
+}
+
+	/*	DIV FOR SELL */
+
+#info-lst {
+	border:solid;
+	float: left;
+	margin-left: 9%;
+	margin-top: 5%;
+	padding: 1%;
+	height: 45%;
+	width: 37%;
+	background-color: var(--dark-green);
+}
+
+#info-artcl {
+	border:solid;
+	float: left;
+	margin-left: 5%;
+	margin-right: 4%;
+	margin-top: 5%;
+	padding: 1%;
+	height: 45%;
+	width: 37%;
+	background-color: var(--light-green);
+}
+
+	/* DIV FOR CART */
+
+#info-cart {
+	border: solid;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 5%;
+	padding: 1%;
+	height: 50%;
+	width: 85%;
+	background-color: var(--light-green);
+}
