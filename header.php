@@ -38,7 +38,7 @@
 						}
 						else {
 							echo "
-							<form action='includes/login.php'>
+							<form action='includes/login.inc.php'>
 								<button type='submit'>Connect</button>
 							</form>";
 						}
