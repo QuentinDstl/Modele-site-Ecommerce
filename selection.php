@@ -1,5 +1,5 @@
 
-<div id="info-barre">
+<div id="info-selection">
 				<div></div>
 				<div id="cat-1"><input type="checkbox" id="pmnt1" name="pmnt1" value="Aunctions" > <label for="pmnt1" > AUNCTIONS </label> </div>
 				<div id="cat-2"><input type="checkbox" id="pmnt2" name="pmnt2" value="Bid"> <label for="pmnt2"> BID </label></div>
