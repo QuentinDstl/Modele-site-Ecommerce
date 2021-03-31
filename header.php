@@ -12,14 +12,16 @@
 		<link rel="stylesheet" href="css/style.css"  type="text/css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/header.js"></script>
 	</head>
 		
 	<body>
 		<header>
 			<div id="top-header">
 				<div id="logo">
-					<img src="images/logo.png" alt="YR MRKT" height="40">
+					<a href="index.php">
+						<img src="images/logo.png" alt="YR MRKT" height="40">
+					</a>
 				</div>
 				<div id="search-bar">
 					<form action="/action_page.php">
@@ -31,15 +33,20 @@
 					
 					<?php
 						if(isset($_SESSION["useruid"])) {
+
 							echo "
-							<form action='includes/logout.inc.php'>
-								<button type='submit'>Disconnect</button>
-							</form>";
+								<form action='profil.php'>
+									<button id='btn-header-left' type='submit'><i class='fa fa-user'><span> ". $_SESSION["useruid"] ."</span></i></button>
+								</form>
+								&nbsp
+								<form action='includes/logout.inc.php'>
+									<button id='btn-header-right'  type='submit'><i class='fa fa-power-off'></i></button>
+								</form>";
 						}
 						else {
 							echo "
-							<form action='includes/login.inc.php'>
-								<button type='submit'>Connect</button>
+							<form action='login.php'>
+								<button class='btn btn-animate' type='submit'>CONNECT</button>
 							</form>";
 						}
 					?>
@@ -48,10 +55,10 @@
 
 			<div id="low-header">
 				<div></div>
-				<div id="cat-1"><a href="#"> CATEGORIES </a></div>
-				<div id="cat-2"><a href="#"> SHOP </a></div>
-				<div id="cat-3"><a href="#"> SELL </a></div>
-				<div id="cat-4"><a href="#"> CART </a></div>
+				<div id="cat-1"><a href="categories.php"> CATEGORIES </a></div>
+				<div id="cat-2"><a href="shop.php"> SHOP </a></div>
+				<div id="cat-3"><a href="sell.php"> SELL </a></div>
+				<div id="cat-4"><a href="cart.php"> CART </a></div>
 				<div></div>
 			</div>
 		</header>
