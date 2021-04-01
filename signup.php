@@ -3,7 +3,7 @@
 ?>
 
 <div class="flex-wrapper">
-	<section class="signup-form">
+	<section class="form-type">
 		<h2>Sign Up</h2><br>
 		<form action="includes/signup.inc.php" method="post">
 			<p>

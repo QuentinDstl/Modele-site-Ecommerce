@@ -37,11 +37,6 @@ header {
 	width: 100%;
 }
 
-label {
-	font-family: "Text";
-	
-}
-
 /*				BUTTON				*/
 
 button {
@@ -233,18 +228,18 @@ button:hover {
 	display: flex;
 }
 
-.signup-form {
+.form-type {
 	padding: 20px 50px 20px 50px;
 	margin: auto;
 }
 
-.signup-form h2 {
+.form-type h2 {
 	font-family: "Title";
 	font-size: 40px;
 	text-align: center;
 }
 
-.signup-form input[type=text], .signup-form input[type=password] {
+.form-type input[type=text], .form-type input[type=password] {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -257,70 +252,40 @@ button:hover {
 	color: red;
 }
 
-/*				SELECTION				*/
+/*				SELL SELCTION				*/
 
-#info-selection {
-	display: grid;
-	grid-template-columns: var(--dist) 1fr 1fr 1fr 1fr var(--dist);
-	background-color: var(--white);
-	border:solid;
-	border-width: 2px;
-	border-radius: 5px;
-}
-
-#info-selection [id^="cat-"] {
+.submenu-wrapper {
 	margin-top: 20px;
-	margin-bottom: 10px;
-	box-sizing: border-box;
-	padding: 0px 25px 0px 25px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+}
+
+.submenu-wrapper #sell-menu {
+	border-radius: 4px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 10px;
 	text-align: center;
+	grid-column-gap: 20px;
 }
 
-#info-selection [id^="cat-"] a {
-		font-size: 20px;
-		letter-spacing: 2px;
-		color: var(--black);
-		font-family: "Title";
-		text-decoration: none;
+.submenu-wrapper #sell-menu .sell-type {
+	border-bottom: 4px solid var(--white);
 }
 
-#slidecontainer {
-	width: 100%; /* Width of the outside container */
+.submenu-wrapper #sell-menu .sell-selected {
+	border-bottom: 4px solid var(--color);
 }
 
-/* The slider itself */
-#slider {
-	
-	-webkit-appearance: none; /* Override default CSS styles */
-	appearance: none;
-	width: 100%; /* Full-width */
-	height: 25px; /* Specified height */
-	background: var(--black); 
-	outline: none; /* Remove outline */
-	opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
-	transition: opacity .2s;
-	
+/*				FILTER				*/
+
+#filter-menu {
+	border-radius: 4px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	padding: 10px;
+	text-align: center;
+	grid-column-gap: 20px;
+	border: 1px solid grey;
 }
-
-	/* Mouse-over effects */
-	#slider:hover {
-		opacity: 1; /* Fully shown on mouse-over */
-	}
-
-	/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-	#slider::-webkit-slider-thumb {
-		-webkit-appearance: none; /* Override default look */
-		appearance: none;
-		width: 25px; /* Set a specific slider handle width */
-		height: 25px; /* Slider handle height */
-		background: #4CAF50; /* Green background */
-		cursor: pointer; /* Cursor on hover */
-	}
-
-	#slider::-moz-range-thumb {
-		width: 25px; /* Set a specific slider handle width */
-		height: 25px; /* Slider handle height */
-		background: #4CAF50; /* Green background */
-		cursor: pointer; /* Cursor on hover */
-	}

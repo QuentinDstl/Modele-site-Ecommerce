@@ -11,8 +11,8 @@ $(document).ready(function() {
 			$(this).closest("div").addClass("active");
 		}
 	});
-
-	changeTheme();
+	
+	// changeTheme();
 	
 });
 

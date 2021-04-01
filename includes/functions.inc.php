@@ -123,3 +123,96 @@
 		}
 	}
 
+	function emptyInputItem($cat, $name, $price) {
+
+		$result;
+		if(empty($cat) || empty($name) || empty($price)) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function invalidName($name) {
+
+		$result;
+		if(!preg_match("/^[a-zA-Z0-9]*$/", $name)) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function invalidPrice($price) {
+		$result;
+		if(!is_int($price)) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function invalidDesc($desc) {
+
+		$result;
+		if(strlen($desc)>250) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function invalidImage($file) {
+		$result;
+		$allowedExtensions = array("jpg", "jpeg", "png", "gif");
+
+		$fileName = $file["name"];
+
+		$fileExtension = explode(".", $fileName);
+		$fileActualExtension = strtolower(end($fileExtension));
+		
+		if(!in_array($fileActualExtension, $allowedExtensions)) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function invalidImageSize($file) {
+		$result;
+
+		$fileSize = $file["size"];
+
+		if($fileSize > 5000000) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function ErrorImage($file) {
+		$result;
+
+		$fileError = $file["error"];
+
+		if($fileError !== 0) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
