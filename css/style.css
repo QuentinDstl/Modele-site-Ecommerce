@@ -289,3 +289,20 @@ button:hover {
 	grid-column-gap: 20px;
 	border: 1px solid grey;
 }
+
+
+/*					INDEX				*/
+
+#indexmenu {
+	border-radius: 4px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr  1fr;
+	padding: 10px;
+	text-align: center;
+	grid-column-gap: 20px;
+	border: 1px solid grey;
+	width:auto;
+	height:auto;
+	background-color:var(--color);
+}
+
