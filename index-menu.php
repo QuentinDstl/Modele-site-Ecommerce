@@ -17,7 +17,7 @@
 		</div>
 
 		<div >SELL: <br>
-		Tou will see all the items you want to sell. You can also enter new item on Yourmarket via sell.
+		You will see all the items you want to sell. You can also enter new item on Yourmarket via sell.
 		<br>
 		<a href="sell.php"><button type="button"> Go to Sell</button> </a>
 		</div>
