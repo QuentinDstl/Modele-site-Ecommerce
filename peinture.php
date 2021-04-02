@@ -2,9 +2,7 @@
 	include_once "header.php";
 ?>
 
-<?php 
-	include_once "index-menu.php";
-?>
+<div> Ici on affiche les peintures  </div>
 
 <?php 
 	include_once "footer.php";

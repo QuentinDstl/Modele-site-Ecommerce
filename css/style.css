@@ -300,3 +300,49 @@ button:hover {
 	grid-column-gap: 20px;
 	border: 1px solid grey;
 }
+
+
+/*					INDEX				*/
+
+#indexmenu {
+	border-radius: 4px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr  1fr;
+	padding: 10px;
+	text-align: center;
+	grid-column-gap: 20px;
+	border: 1px solid grey;
+	width:auto;
+	height:auto;
+	background-color:var(--color);
+}
+/*					CATEGORIES            */
+
+.submenu-double {
+	margin-top: 20px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr 4fr 1fr;
+}
+
+#categorie-menu {
+	border-radius: 4px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 10px;
+	text-align: center;
+	grid-column-gap: 20px;
+	border: 1px solid grey;
+	width: auto;
+	height: auto;
+	background-color: var(--color);
+}
+#categorie-titre {
+	border-radius: 4px;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid grey;
+	width: auto;
+	height: auto;
+	background-color: var(--white);
+}

@@ -2,9 +2,7 @@
 	include_once "header.php";
 ?>
 
-<?php 
-	include_once "index-menu.php";
-?>
+<div> Ici on affiche les cd  </div>
 
 <?php 
 	include_once "footer.php";
