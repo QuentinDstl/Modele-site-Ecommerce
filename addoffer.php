@@ -1,32 +1,36 @@
 <div class="flex-wrapper">
 	<section class="form-type">
-		<h2>Add item</h2><br>
-		<form action="includes/additem.inc.php" method="post" enctype="multipart/form-data">
+		<h2>Add Offer</h2><br>
+		<form action="includes/addoffer.inc.php" method="post" enctype="multipart/form-data">
 			<p>
-				<label for="category" class="subtitle">Select Category</label>
-				<select name="category" id="category">
+				<label for="ao-category" class="subtitle">Select Category</label><br>
+				<select name="category" id="ao-category">
 					<option value="">--Please choose an option--</option>
 					<option value="NFT">NFT</option>
 				</select>
-			</p>
-
-			<p>
-				<label for="name" class="subtitle">Item Name</label>
-				<input type="text" name="name" id="name" placeholder="Name of item ...">
 				<br>
 			</p>
+
 			<p>
-				<label for="price" class="subtitle">Item Price</label>
-				<input type="text" name="price" id="price" placeholder="Price of item ..."><br>
-			</p>
-			<p>
-				<label for="description" class="subtitle">Item Description</label>
-				<input type="text" name="description" id="description" placeholder="Description of item ..."><br>
+				<label for="ao-name" class="subtitle">Offer Name</label><br>
+				<input type="text" name="name" id="ao-name" placeholder="Name of item ...">
+				<br>
 			</p>
 
 			<p>
-				<label for="image1" class="subtitle">Item Description</label>
-				<input type="file" name="image1" id="image1"><br>
+				<label for="ao-price" class="subtitle">Offer Price</label><br>
+				<input type="text" name="price" id="ao-price" placeholder="Price of item ..."><br>
+			</p>
+
+			<p>
+				<label for="ao-description" class="subtitle">Offer Description</label><br>
+				<input type="text" name="description" id="ao-description" placeholder="Description of item ..."><br>
+			</p>
+		
+			<p>
+				<label for="ao-image1" class="subtitle">Offer Picture</label><br>
+				<input type="file" name="image1" id="ao-image1"><br>
+				<br>
 			</p>
 
 			<div class="flex-wrapper">

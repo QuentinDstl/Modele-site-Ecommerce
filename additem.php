@@ -1,32 +1,36 @@
 <div class="flex-wrapper">
 	<section class="form-type">
-		<h2>Add item</h2><br>
+		<h2>Add Item</h2><br>
 		<form action="includes/additem.inc.php" method="post" enctype="multipart/form-data">
 			<p>
-				<label for="category" class="subtitle">Select Category</label>
-				<select name="category" id="category">
+				<label for="ai-category" class="subtitle">Select Category</label><br>
+				<select name="category" id="ai-category">
 					<option value="">--Please choose an option--</option>
 					<option value="NFT">NFT</option>
 				</select>
-			</p>
-
-			<p>
-				<label for="name" class="subtitle">Item Name</label>
-				<input type="text" name="name" id="name" placeholder="Name of item ...">
 				<br>
 			</p>
+
 			<p>
-				<label for="price" class="subtitle">Item Price</label>
-				<input type="text" name="price" id="price" placeholder="Price of item ..."><br>
-			</p>
-			<p>
-				<label for="description" class="subtitle">Item Description</label>
-				<input type="text" name="description" id="description" placeholder="Description of item ..."><br>
+				<label for="ai-name" class="subtitle">Item Name</label><br>
+				<input type="text" name="name" id="ai-name" placeholder="Name of item ...">
+				<br>
 			</p>
 
 			<p>
-				<label for="image1" class="subtitle">Item Description</label>
-				<input type="file" name="image1" id="image1"><br>
+				<label for="ai-price" class="subtitle">Item Price</label><br>
+				<input type="text" name="price" id="ai-price" placeholder="Price of item ..."><br>
+			</p>
+			
+			<p>
+				<label for="ai-description" class="subtitle">Item Description</label><br>
+				<input type="text" name="description" id="ai-description" placeholder="Description of item ..."><br>
+			</p>
+
+			<p>
+				<label for="ai-image1" class="subtitle">Item Picture</label><br>
+				<input type="file" name="image1" id="ai-image1"><br>
+				<br>
 			</p>
 
 			<div class="flex-wrapper">

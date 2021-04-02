@@ -46,7 +46,8 @@
 			exit();
 		}
 
-		// createItem($conn,  $username, $email, $pwd);
+		// need to find sellername and add it as external db
+		// createItem($conn,  $username, $email, $pwd, $sellername);
 	}
 	else {
 		header("location: ../sell.php");

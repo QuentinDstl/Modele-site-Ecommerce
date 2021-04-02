@@ -7,6 +7,7 @@
 		$price = intval($_POST["price"]);
 		$desc = $_POST["description"];
 		$file1 = $_FILES["image1"];
+		$date = $_FILES["date"];
 
 		require_once "databasehandler.inc.php";
 		require_once "functions.inc.php";
@@ -41,8 +42,13 @@
 			exit();
 		}
 
-		if(ErrorImage($file1) !== false) {
+		if(errorImage($file1) !== false) {
 			header("location: ../sell.php?error=errorimg");
+			exit();
+		}
+
+		if(invalidDate($date) !== false) {
+			header("location: ../sell.php?error=invaliddate");
 			exit();
 		}
 

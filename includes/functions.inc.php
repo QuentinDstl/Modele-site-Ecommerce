@@ -202,12 +202,27 @@
 		return $result;
 	}
 
-	function ErrorImage($file) {
+	function errorImage($file) {
 		$result;
 
 		$fileError = $file["error"];
 
 		if($fileError !== 0) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function invalidDate($date) {
+		$result;
+		
+		$deadline = new DateTime($date);
+		$now = new DateTime();
+
+		if($deadline < $now) {
 			$result = true;
 		}
 		else {

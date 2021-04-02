@@ -124,7 +124,7 @@ button:hover {
 /*				TEXT				*/
 
 .subtitle {
-	font-family: "Text";
+	font-family: "Subtitle";
 }
 
 /*				TOP HEADER				*/
@@ -255,7 +255,7 @@ button:hover {
 /*				SELL SELCTION				*/
 
 .submenu-wrapper {
-	margin-top: 20px;
+	margin-top: 10px;
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 4fr 1fr;
@@ -268,6 +268,17 @@ button:hover {
 	padding: 10px;
 	text-align: center;
 	grid-column-gap: 20px;
+}
+
+.submenu-wrapper #sell-menu div input {
+	cursor: pointer;
+	background-color: var(--white);
+	padding: 10px;
+	font-size: 24px;
+}
+
+.submenu-wrapper #sell-menu div input:hover {
+	font-family: "Subtitle";
 }
 
 .submenu-wrapper #sell-menu .sell-type {

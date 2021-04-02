@@ -17,18 +17,22 @@
 
 <?php
 	if(isset($_SESSION["selltype"])) {
-		echo $_SESSION["selltype"];
+		if($_SESSION["selltype"] === "item") {
+			include_once "additem.php";
+		}
+		else if($_SESSION["selltype"] === "offer") {
+			include_once "addoffer.php";
+		}
+		else if($_SESSION["selltype"] === "auction") {
+			include_once "addauction.php";
+		}
 	}
 	else {
+		// presenter les style de ventes différents
 		echo "no sell type yet";
 	}
-	
-
 ?>
 
-<?php 
-	include_once "additem.php";
-?>
 <?php 
 	include_once "footer.php";
 ?>

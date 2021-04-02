@@ -2,9 +2,8 @@
 	if(isset($_POST["key"])) {
 		session_start();
 		$key = $_POST["key"];
-		$value = $_POST["value"];
 
-		$_SESSION[$key] = $value;
+		echo $_SESSION[$key];
 	}
 	else {
 		header("location: ../sell.php");

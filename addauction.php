@@ -1,32 +1,42 @@
 <div class="flex-wrapper">
 	<section class="form-type">
-		<h2>Add item</h2><br>
-		<form action="includes/additem.inc.php" method="post" enctype="multipart/form-data">
+		<h2 style="font-size: 36px;">Add Auction</h2><br>
+		<form action="includes/addauction.inc.php" method="post" enctype="multipart/form-data">
 			<p>
-				<label for="category" class="subtitle">Select Category</label>
-				<select name="category" id="category">
+				<label for="aa-category" class="subtitle">Select Category</label><br>
+				<select name="category" id="aa-category">
 					<option value="">--Please choose an option--</option>
 					<option value="NFT">NFT</option>
 				</select>
-			</p>
-
-			<p>
-				<label for="name" class="subtitle">Item Name</label>
-				<input type="text" name="name" id="name" placeholder="Name of item ...">
 				<br>
 			</p>
+
 			<p>
-				<label for="price" class="subtitle">Item Price</label>
-				<input type="text" name="price" id="price" placeholder="Price of item ..."><br>
-			</p>
-			<p>
-				<label for="description" class="subtitle">Item Description</label>
-				<input type="text" name="description" id="description" placeholder="Description of item ..."><br>
+				<label for="aa-name" class="subtitle">Auction Name</label><br>
+				<input type="text" name="name" id="aa-name" placeholder="Name of item ...">
+				<br>
 			</p>
 
 			<p>
-				<label for="image1" class="subtitle">Item Description</label>
-				<input type="file" name="image1" id="image1"><br>
+				<label for="aa-price" class="subtitle">Auction Price</label><br>
+				<input type="text" name="price" id="aa-price" placeholder="Price of item ..."><br>
+			</p>
+			
+			<p>
+				<label for="aa-description" class="subtitle">Auction Description</label><br>
+				<input type="text" name="description" id="aa-description" placeholder="Description of item ..."><br>
+			</p>
+
+			<p>
+				<label for="aa-image1" class="subtitle">Auction Picture</label><br>
+				<input type="file" name="image1" id="aa-image1"><br>
+				<br>
+			</p>
+
+			<p>
+				<label for="aa-date" class="subtitle">Auction Deadline</label><br>
+				<input type="date" name="date" id="aa-date"><br>
+				<br>
 			</p>
 
 			<div class="flex-wrapper">
@@ -57,6 +67,9 @@
 					}
 					else if($_GET["error"]=="errorimg") {
 						echo "<br><p>Problem while loading image !</p>";
+					}
+					else if($_GET["error"]=="invaliddate") {
+						echo "<br><p>The deadline is already past !</p>";
 					}
 				}
 			?>
