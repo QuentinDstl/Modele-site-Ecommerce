@@ -9,7 +9,7 @@
 			</select>
 		</div>
 		<div >
-			<label for="filter1" >AUNCTIONS</label><br>
+			<label for="filter1" >AUCTIONS</label><br>
 			<input type="checkbox" id="filter1" name="filter1" value="Aunctions" >
 		</div>
 		<div >
