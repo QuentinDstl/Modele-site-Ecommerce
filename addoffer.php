@@ -62,6 +62,12 @@
 					else if($_GET["error"]=="errorimg") {
 						echo "<br><p>Problem while loading image !</p>";
 					}
+					else if($_GET["error"]=="stmtfailed") {
+						echo "<br><p>Something went wrong, try again!</p>";
+					}
+					else if($_GET["error"]=="none") {
+						echo "<br><p style='color:green'>You have add an new offer !</p>";
+					}
 				}
 			?>
 		</div>

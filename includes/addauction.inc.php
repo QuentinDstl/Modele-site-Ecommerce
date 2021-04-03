@@ -7,7 +7,8 @@
 		$price = intval($_POST["price"]);
 		$desc = $_POST["description"];
 		$file1 = $_FILES["image1"];
-		$date = $_FILES["date"];
+		$date = $_POST["date"];
+		$sellerid = $_SESSION["userid"];
 
 		require_once "databasehandler.inc.php";
 		require_once "functions.inc.php";
@@ -32,6 +33,11 @@
 			exit();
 		}
 
+		if(invalidDate($date) !== false) {
+			header("location: ../sell.php?error=invaliddate");
+			exit();
+		}
+
 		if(invalidImage($file1) !== false) {
 			header("location: ../sell.php?error=invalidimg");
 			exit();
@@ -47,12 +53,7 @@
 			exit();
 		}
 
-		if(invalidDate($date) !== false) {
-			header("location: ../sell.php?error=invaliddate");
-			exit();
-		}
-
-		// createItem($conn,  $username, $email, $pwd);
+		createAuction($conn,  $cat, $name, $price, $desc, $file1, $date, $sellerid);
 	}
 	else {
 		header("location: ../sell.php");

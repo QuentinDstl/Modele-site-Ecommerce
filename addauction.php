@@ -21,7 +21,7 @@
 				<label for="aa-price" class="subtitle">Auction Price</label><br>
 				<input type="text" name="price" id="aa-price" placeholder="Price of item ..."><br>
 			</p>
-			
+
 			<p>
 				<label for="aa-description" class="subtitle">Auction Description</label><br>
 				<input type="text" name="description" id="aa-description" placeholder="Description of item ..."><br>
@@ -70,6 +70,12 @@
 					}
 					else if($_GET["error"]=="invaliddate") {
 						echo "<br><p>The deadline is already past !</p>";
+					}
+					else if($_GET["error"]=="stmtfailed") {
+						echo "<br><p>Something went wrong, try again!</p>";
+					}
+					else if($_GET["error"]=="none") {
+						echo "<br><p style='color:green'>You have add an new auction !</p>";
 					}
 				}
 			?>

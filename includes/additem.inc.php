@@ -1,12 +1,14 @@
 <?php
-
 	if(isset($_POST["submit"])) {
+
+		session_start();
 
 		$cat = $_POST["category"];
 		$name = $_POST["name"];
 		$price = intval($_POST["price"]);
 		$desc = $_POST["description"];
 		$file1 = $_FILES["image1"];
+		$sellerid = $_SESSION["userid"];
 
 		require_once "databasehandler.inc.php";
 		require_once "functions.inc.php";
@@ -46,8 +48,7 @@
 			exit();
 		}
 
-		// need to find sellername and add it as external db
-		// createItem($conn,  $username, $email, $pwd, $sellername);
+		createItem($conn,  $cat, $name, $price, $desc, $file1, $sellerid);
 	}
 	else {
 		header("location: ../sell.php");

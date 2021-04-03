@@ -7,6 +7,7 @@
 		$price = intval($_POST["price"]);
 		$desc = $_POST["description"];
 		$file1 = $_FILES["image1"];
+		$sellerid = $_SESSION["userid"];
 
 		require_once "databasehandler.inc.php";
 		require_once "functions.inc.php";
@@ -46,7 +47,7 @@
 			exit();
 		}
 
-		// createItem($conn,  $username, $email, $pwd);
+		createOffer($conn,  $cat, $name, $price, $desc, $file1, $sellerid);
 	}
 	else {
 		header("location: ../sell.php");

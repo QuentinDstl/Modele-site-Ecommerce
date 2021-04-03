@@ -21,7 +21,7 @@
 				<label for="ai-price" class="subtitle">Item Price</label><br>
 				<input type="text" name="price" id="ai-price" placeholder="Price of item ..."><br>
 			</p>
-			
+
 			<p>
 				<label for="ai-description" class="subtitle">Item Description</label><br>
 				<input type="text" name="description" id="ai-description" placeholder="Description of item ..."><br>
@@ -61,6 +61,12 @@
 					}
 					else if($_GET["error"]=="errorimg") {
 						echo "<br><p>Problem while loading image !</p>";
+					}
+					else if($_GET["error"]=="stmtfailed") {
+						echo "<br><p>Something went wrong, try again!</p>";
+					}
+					else if($_GET["error"]=="none") {
+						echo "<br><p style='color:green'>You have add an new item !</p>";
 					}
 				}
 			?>
