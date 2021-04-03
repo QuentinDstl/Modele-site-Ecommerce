@@ -242,7 +242,8 @@
 		}
 
 		// move picture to server
-		$fileExtension = strtolower(end(explode(".", $file["name"])));
+		$tmp=explode(".", $file["name"]);
+		$fileExtension = strtolower(end($tmp));
 		$fileDestination = "../images/uploads/".$itemKey.".".$fileExtension;
 		move_uploaded_file($file["tmp_name"], $fileDestination);
 
