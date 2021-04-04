@@ -14,6 +14,9 @@
 		}
 
 		loginUser($conn, $username, $pwd);
+		$raw = getUserInfo($conn, $username);
+		header("location: ../index.php".$raw["buyersFirstName"]);
+		exit();
 	}
 	else {
 		header("location: ../login.php");

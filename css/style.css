@@ -210,12 +210,17 @@ button:hover {
 	text-align: center;
 	border-bottom: 4px solid var(--white);
 }
+
 #low-header [id^="cat-"] a {
 	font-size: 20px;
 	letter-spacing: 2px;
 	color: var(--black);
 	font-family: "Title";
 	text-decoration: none;
+}
+
+#low-header [id^="cat-"]:hover a{
+	color: var(--color);
 }
 
 #low-header .active {

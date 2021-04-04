@@ -1,8 +1,19 @@
 <?php
-	function emptyInputSignup($name, $email, $username, $pwd, $pwdrepeat) {
+	function emptyInputSignup($lastname, $firstname, $email, $username, $pwd, $pwdrepeat, $number, $street, $city, $zip, $country) {
 
 		$result;
-		if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdrepeat)) {
+		if(empty($lastname) || empty($firstname) || empty($email) || empty($username) || empty($pwd) || empty($pwdrepeat) || empty($number) || empty($street) || empty($city) || empty($zip) || empty($country)) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
+
+	function emptyInputClause($accept) {
+		$result;
+		if(empty($accept)) {
 			$result = true;
 		}
 		else {
@@ -70,7 +81,14 @@
 		mysqli_stmt_close($stmt);
 	}
 
-	function createUser($conn, $username, $email, $pwd) {
+	function createAddress($number, $street, $city, $zip, $country) {
+		$address;
+
+		$address = $number.":".$street.":".$city.":".$zip.":".$country;
+		return $address;
+	}
+
+	function createUser($conn, $lastname, $firstname, $username, $email, $pwd, $address) {
 		$sql = "INSERT INTO users (usersUid, usersEmail, usersPwd) VALUES (?,?,?);";
 		$stmt = mysqli_stmt_init($conn);
 		if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -83,6 +101,19 @@
 		mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
+
+		// insert into buyers table :
+		$_sql = "INSERT INTO buyers (buyersUid, buyersLastName, buyersFirstName, buyersAddress) VALUES (?,?,?,?);";
+		$_stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($_stmt, $_sql)) {
+			header("location: ../signup.php?error=stmtfailed");
+			exit();
+		}
+
+		mysqli_stmt_bind_param($_stmt, "ssss", $username, $lastname, $firstname, $address);
+		mysqli_stmt_execute($_stmt);
+		mysqli_stmt_close($_stmt);
+
 		header("location: ../signup.php?error=none");
 		exit();
 	}
@@ -118,9 +149,35 @@
 			session_start();
 			$_SESSION["userid"] = $uidExists["usersId"];
 			$_SESSION["useruid"] = $uidExists["usersUid"];
-			header("location: ../index.php");
+		}
+	}
+
+	function getUserInfo($conn, $username) {
+		$table = "buyers";
+		// $sql ="SELECT * FROM users INNER JOIN admins ON users.usersUid = admins.adminsUid;";
+		$sql ="SELECT * FROM users INNER JOIN ? ON users.usersUid = ? WHERE users.usersUid = ?;";
+		
+		// $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)) {
+			die("<pre>Prepare failed:\n".mysqli_error($conn)."\n$sql</pre>");
+			// header("location: ../login.php?error=stmtfailed&".$error);
+			// exit();
+		}
+		$checkTable = $table.".".$table."Uid";
+		mysqli_stmt_bind_param($stmt, "sss", $table, $checkTable, $username);
+		mysqli_stmt_execute($stmt);
+
+		$resultData = mysqli_stmt_get_result($stmt);
+
+		if($row = mysqli_fetch_assoc($resultData)) {
+			return $row;
+		}
+		else {
+			header("location: ../login.php?error=noresult");
 			exit();
 		}
+		mysqli_stmt_close($stmt);
 	}
 
 	function emptyInputItem($cat, $name, $price) {
@@ -242,7 +299,8 @@
 		}
 
 		// move picture to server
-		$fileExtension = strtolower(end(explode(".", $file["name"])));
+		$tmp = explode(".", $file["name"]);
+		$fileExtension = strtolower(end($tmp));
 		$fileDestination = "../images/uploads/".$itemKey.".".$fileExtension;
 		move_uploaded_file($file["tmp_name"], $fileDestination);
 
