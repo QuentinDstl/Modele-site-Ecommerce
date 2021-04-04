@@ -32,6 +32,7 @@
 		 PAINT <br>
 		 Here you can found finest painting with good colors. We hope you can found the painting to your liking ... 
 		 <br>
+		 <br>
 		 <a href="peinture.php"> <IMG SRC="images/tableau.jpg  " height="50%" width="50%"></a>
 		 <br>
 		</div>
@@ -39,7 +40,7 @@
 		<div> 
 		PICTURE <br>
 		You can purchase different picture. There are many different masterpieces we hope you found the one ...
-
+		
 		<br>
 		 <a href="photo.php"> <IMG SRC="images/photo.jpg  " height="50%" width="50%"></a>
 		<br>
@@ -57,7 +58,8 @@
 		<div> VINYLE <br> 
 			Here we propose music on a unique and ancient format vinyle, come choose yours ...
 			<br>
-			<a href="vinyles.php"> <IMG SRC="images/vinyle.jpg " height="50%" width="50%"> </a>
+				<br>	
+				<a href="vinyles.php"> <IMG SRC="images/vinyle.jpg " height="50%" width="50%"> </a>
 		</div>
 	</div>
 	<div> </div>
