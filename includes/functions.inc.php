@@ -342,6 +342,7 @@
 		$fileExtension = strtolower(end($tmp));
 		$fileDestination = "../images/uploads/".$itemKey.".".$fileExtension;
 		move_uploaded_file($file["tmp_name"], $fileDestination);
+		$fileDestination = "images/uploads/".$itemKey.".".$fileExtension;
 
 		mysqli_stmt_bind_param($stmt, "sssiss", $itemKey, $cat, $name, $price, $desc, $fileDestination);
 		mysqli_stmt_execute($stmt);
@@ -377,6 +378,7 @@
 		$fileExtension = strtolower(end($tmp));
 		$fileDestination = "../images/uploads/".$itemKey.".".$fileExtension;
 		move_uploaded_file($file["tmp_name"], $fileDestination);
+		$fileDestination = "images/uploads/".$itemKey.".".$fileExtension;
 
 		mysqli_stmt_bind_param($stmt, "sssiss", $itemKey, $cat, $name, $price, $desc, $fileDestination);
 		mysqli_stmt_execute($stmt);
@@ -413,7 +415,7 @@
 		$fileExtension = strtolower(end($tmp));
 		$fileDestination = "../images/uploads/".$itemKey.".".$fileExtension;
 		move_uploaded_file($file["tmp_name"], $fileDestination);
-
+		$fileDestination = "images/uploads/".$itemKey.".".$fileExtension;
 		mysqli_stmt_bind_param($stmt, "sssiss", $itemKey, $cat, $name, $price, $desc, $fileDestination);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
