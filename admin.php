@@ -6,15 +6,11 @@
 
 <div class="flex-wrapper">
 	<section class="form-type">
-		<h2>Login</h2><br>
+		<h2>EDIT</h2><br>
 		<form action="includes/admin.inc.php" method="post">
 			<p>
-				<label for="uid" class="subtitle">Your User Name or your Email</label>
-				<input type="text" name="uid" id="uid" placeholder="Username/Email ..."><br>
-			</p>
-			<p>
-				<label for="pwd" class="subtitle">Your Password</label>
-				<input type="password" name="pwd" id="pwd" placeholder="Password ..."><br>
+				<label for="name-uid" class="subtitle">Take controle of :</label>
+				<input type="text" name="uid" id="name-uid" placeholder="Username ..."><br>
 			</p>
 
 			<div class="flex-wrapper">
