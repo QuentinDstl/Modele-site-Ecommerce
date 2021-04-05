@@ -6,7 +6,11 @@
 				<label for="ai-category" class="subtitle">Select Category</label><br>
 				<select name="category" id="ai-category">
 					<option value="">--Please choose an option--</option>
-					<option value="NFT">NFT</option>
+					 
+				<option value="cd">Cd</option>
+				<option value="vinyles">Vyniles</option>
+				<option value="paint">Paint</option>
+				<option value="pictures">Pictures</option>
 				</select>
 				<br>
 			</p>
