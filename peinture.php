@@ -3,15 +3,23 @@
 	include_once "header.php";
 ?>
 
+
+<div class="submenu-wrapper">
+<div>
+</div>
+<div> Paint</div>
+<div> </div>
+</div>
+
 <div class="submenu-wrapper">
 <div></div>
 
 	
-	<div class="gallery-container">
+	<div id="gallery-container">
 
 <?php
-	$choose="test1"
-	$sql = "SELECT * FROM items WHERE itemsName='test1';";  
+	
+	$sql = "SELECT * FROM items WHERE itemsCat ='paint';";  
 	$result =mysqli_query($conn, $sql);
 	$resultcheck = mysqli_num_rows($result);
 	if($resultcheck > 0) {
@@ -20,7 +28,7 @@
 			 <IMG SRC="'.$row["itemsImgs"].'" height="50%" width="25%"> 
 			<br>
 			<h3> '.$row ["itemsName"].'</h3>
-			<p>'.$row["itemsDesc"].' <br> '.$row["itemsPrice"].' £  </p> </div>';		
+			<p>'.$row["itemsDesc"].' <br> '.$row["itemsPrice"].'</p> </div>';		
 			}
 	}
 ?>

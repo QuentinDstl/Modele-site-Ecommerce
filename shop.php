@@ -63,7 +63,8 @@ if(isset($_POST["submit"]))
 								<br>
 								<h1> '.$row ["itemsName"].'</h1> 
 								'.$row["itemsDesc"].' 
-							 <br> '.$row["itemsPrice"].'    </div>';		
+							 <br> '.$row["itemsPrice"].'  <br>
+							 <button type="checkbox" name="'.$row["itemsId"].' class="btn btn-animate" style="margin: auto">ADD</button>  </div>';		
 				}
 			}
 				
@@ -80,7 +81,7 @@ if(isset($_POST["submit"]))
 			 <br>
 			 <h1> '.$row ["itemsName"].'</h1> 
 			 '.$row["itemsDesc"].' 
-			 <br> '.$row["itemsPrice"].'    </div>';		
+			 <br> '.$row["itemsPrice"].'   <br> <button type="checkbox" name="'.$row["itemsId"].' class="btn btn-animate" style="margin: auto">ADD</button> </div>';		
 			  }
 			}
 		}
@@ -96,7 +97,7 @@ if(isset($_POST["submit"]))
 			 <br>
 			 <h1> '.$row ["itemsName"].'</h1> 
 			 '.$row["itemsDesc"].' 
-			 <br> '.$row["itemsPrice"].'    </div>';		
+			 <br> '.$row["itemsPrice"].' <br> <button type="checkbox" name="'.$row["itemsId"].' class="btn btn-animate" style="margin: auto">ADD</button>   </div>';		
 			  }
 			}
 		}
@@ -112,7 +113,7 @@ if(isset($_POST["submit"]))
 			 <br>
 			 <h1> '.$row ["itemsName"].'</h1> 
 			 '.$row["itemsDesc"].' 
-			 <br> '.$row["itemsPrice"].'    </div>';		
+			 <br> '.$row["itemsPrice"].'  <br> <button type="checkbox" name="'.$row["itemsId"].' class="btn btn-animate" style="margin: auto">ADD</button>  </div>';		
 			  }
 			}
 		}
@@ -128,7 +129,7 @@ if(isset($_POST["submit"]))
 			 <br>
 			 <h1> '.$row ["itemsName"].'</h1> 
 			 '.$row["itemsDesc"].' 
-			 <br> '.$row["itemsPrice"].'    </div>';		
+			 <br> '.$row["itemsPrice"].' <br><button type="checkbox" name="'.$row["itemsId"].' class="btn btn-animate" style="margin: auto">ADD</button>   </div>';		
 			  }
 			}
 		}
