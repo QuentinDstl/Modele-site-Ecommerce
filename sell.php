@@ -1,5 +1,7 @@
-<?php 
-	include_once "header.php";
+<?php
+	session_start();
+	if($_SESSION["usertype"]==="sellers" || $_SESSION["usertype"]==="admins") { 
+		include_once "header.php";
 ?>
 
 <script type="text/javascript" src="js/selltype.js"></script>
@@ -29,10 +31,25 @@
 	}
 	else {
 		// presenter les style de ventes différents
-		echo "no sell type yet";
+		echo '
+			<div class="flex-wrapper">
+				<img src="images/upper.gif" alt="upper-arrow" width="80" style="margin:auto">
+			</div>
+			<div style="text-align: center">
+				<span class="subtitle">You can chose the sell type for your items :</span><br>
+				1: buy the item at is original cost.<br>
+				2: Buyers will propose you some offers to get the item.<br>
+				3: Aunctions you can bid for the item for a a fixe period of time and the higgest bidder wins.<br>
+			</div>
+		';
 	}
 ?>
 
-<?php 
-	include_once "footer.php";
+<?php
+		include_once "footer.php";
+	}
+	else {
+		header("location: login.php");
+		exit();
+	}
 ?>

@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	if(!isset($_SESSION)) { 
+		session_start(); 
+	} 
 ?>
 
 
@@ -57,8 +59,36 @@
 				<div></div>
 				<div id="cat-1"><a href="categories.php"> CATEGORIES </a></div>
 				<div id="cat-2"><a href="shop.php"> SHOP </a></div>
-				<div id="cat-3"><a href="sell.php"> SELL </a></div>
-				<div id="cat-4"><a href="cart.php"> CART </a></div>
+				<?php
+						if(isset($_SESSION["usertype"])) {
+							// user is connected
+							if($_SESSION["usertype"] === "buyers") {
+								echo "
+									<div id='cat-3'><a href='cart.php'> CART </a></div>
+									<div id='cat-4'><a href='contactus.php'> CONTACT </a></div>
+								";
+							}
+							else if($_SESSION["usertype"] === "sellers") {
+								echo "
+									<div id='cat-3'><a href='sell.php'> SELL </a></div>
+									<div id='cat-4'><a href='contactus.php'> CONTACT </a></div>
+								";
+							}
+							else if($_SESSION["usertype"] === "admins") {
+								echo "
+									<div id='cat-3'><a href='sell.php'> SELL </a></div>
+									<div id='cat-4'><a href='admin.php'> ADMIN </a></div>
+								";
+							}
+						}
+						else {
+							// user not connected
+							echo "
+								<div id='cat-3'><a href='login.php'> CART </a></div>
+								<div id='cat-4'><a href='contactus.php'> CONTACT </a></div>
+							";
+						}
+					?>
 				<div></div>
 			</div>
 		</header>

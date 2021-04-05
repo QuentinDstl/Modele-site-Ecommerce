@@ -2,6 +2,8 @@
 
 	if(isset($_POST["submit"])) {
 
+		session_start();
+
 		$cat = $_POST["category"];
 		$name = $_POST["name"];
 		$price = intval($_POST["price"]);

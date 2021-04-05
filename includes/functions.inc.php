@@ -149,35 +149,74 @@
 			session_start();
 			$_SESSION["userid"] = $uidExists["usersId"];
 			$_SESSION["useruid"] = $uidExists["usersUid"];
+			$_SESSION["useremail"] = $uidExists["usersEmail"];
 		}
 	}
 
 	function getUserInfo($conn, $username) {
-		$table = "buyers";
-		// $sql ="SELECT * FROM users INNER JOIN admins ON users.usersUid = admins.adminsUid;";
-		$sql ="SELECT * FROM users INNER JOIN ? ON users.usersUid = ? WHERE users.usersUid = ?;";
-		
-		// $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
-		$stmt = mysqli_stmt_init($conn);
-		if(!mysqli_stmt_prepare($stmt, $sql)) {
-			die("<pre>Prepare failed:\n".mysqli_error($conn)."\n$sql</pre>");
-			// header("location: ../login.php?error=stmtfailed&".$error);
-			// exit();
-		}
-		$checkTable = $table.".".$table."Uid";
-		mysqli_stmt_bind_param($stmt, "sss", $table, $checkTable, $username);
+
+		session_start();
+		$stmt = getUserInfoTable($conn, "buyers");
+
+		mysqli_stmt_bind_param($stmt, "s", $username);
 		mysqli_stmt_execute($stmt);
 
 		$resultData = mysqli_stmt_get_result($stmt);
 
 		if($row = mysqli_fetch_assoc($resultData)) {
+			$_SESSION["usertype"] = "buyers";
+			$_SESSION["lastname"] = $row["buyersLastName"];
+			$_SESSION["firstname"] = $row["buyersFirstName"];
+			$_SESSION["address"] = $row["buyersAddress"];
+			$_SESSION["payement"] = $row["buyersPayement"];
 			return $row;
 		}
 		else {
-			header("location: ../login.php?error=noresult");
-			exit();
+			$stmt = getUserInfoTable($conn, "sellers");
+
+			mysqli_stmt_bind_param($stmt, "s", $username);
+			mysqli_stmt_execute($stmt);
+
+			$resultData = mysqli_stmt_get_result($stmt);
+
+			if($row = mysqli_fetch_assoc($resultData)) {
+				$_SESSION["usertype"] = "sellers";
+				$_SESSION["name"] = $row["sellersName"];
+				$_SESSION["picture"] = $row["buyersFirstName"];
+				$_SESSION["background"] = $row["buyersPayement"];
+				return $row;
+			}
+			else {
+				$stmt = getUserInfoTable($conn, "admins");
+
+				mysqli_stmt_bind_param($stmt, "s", $username);
+				mysqli_stmt_execute($stmt);
+
+				$resultData = mysqli_stmt_get_result($stmt);
+
+				if($row = mysqli_fetch_assoc($resultData)) {
+					$_SESSION["usertype"] = "admins";
+					$_SESSION["adminacces"] = $row["adminsAcces"];
+					return $row;
+				}
+				else {
+					header("location: ../login.php?error=noresult");
+					exit();
+				}
+			}
 		}
 		mysqli_stmt_close($stmt);
+	}
+
+	function getUserInfoTable($conn, $table) {
+		$sql ="SELECT * FROM users INNER JOIN ".$table." ON users.usersUid = ".$table.".".$table."Uid WHERE users.usersUid = ?;";
+		
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: ../login.php?error=stmtfailed");
+			exit();
+		}
+		return $stmt;
 	}
 
 	function emptyInputItem($cat, $name, $price) {
@@ -334,7 +373,8 @@
 		}
 
 		// move picture to server
-		$fileExtension = strtolower(end(explode(".", $file["name"])));
+		$tmp=explode(".", $file["name"]);
+		$fileExtension = strtolower(end($tmp));
 		$fileDestination = "../images/uploads/".$itemKey.".".$fileExtension;
 		move_uploaded_file($file["tmp_name"], $fileDestination);
 
@@ -369,7 +409,8 @@
 		}
 
 		// move picture to server
-		$fileExtension = strtolower(end(explode(".", $file["name"])));
+		$tmp=explode(".", $file["name"]);
+		$fileExtension = strtolower(end($tmp));
 		$fileDestination = "../images/uploads/".$itemKey.".".$fileExtension;
 		move_uploaded_file($file["tmp_name"], $fileDestination);
 
@@ -390,4 +431,45 @@
 
 		header("location: ../sell.php?error=none");
 		exit();
+	}
+
+	function modifyBuyers($conn, $username, $lastname, $firstname) {
+		$sql = "UPDATE buyers SET buyersLastName = ?, buyersFirstName = ? WHERE buyers.buyersUid = ?;";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: ../profil.php?error=stmtfailed");
+			exit();
+		}
+
+		mysqli_stmt_bind_param($stmt, "sss", $lastname, $firstname, $username);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+	}
+
+	function modifySellers($conn, $username, $name) {
+		$sql = "UPDATE sellers SET sellersName = ? WHERE sellers.sellersUid = ?;";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: ../profil.php?error=stmtfailed");
+			exit();
+		}
+
+		mysqli_stmt_bind_param($stmt, "ss", $name, $username);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+	}
+
+	function modifyUsers($conn, $username, $email, $pwd) {
+		$sql = "UPDATE users SET usersEmail = ?, usersPwd = ? WHERE users.usersUid = ?;";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: ../profil.php?error=stmtfailed");
+			exit();
+		}
+
+		$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+		mysqli_stmt_bind_param($stmt, "sss", $email, $hashedPwd, $username);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
 	}

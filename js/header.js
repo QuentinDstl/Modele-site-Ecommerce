@@ -2,6 +2,7 @@ var colors = ["#23CE6B", "#5386E4", "#ED315D", "#CBFF47", "#7E3F8F", "#027C8D", 
 var selectedColor = 0;
 
 $(document).ready(function() {
+	document.documentElement.style.setProperty("--color", colors[getRandomInt(colors.length)]);
 	var location = window.location.href;
 
 	$("#low-header a").each(function () {
@@ -10,21 +11,9 @@ $(document).ready(function() {
 		if (location == linkPage) {
 			$(this).closest("div").addClass("active");
 		}
-	});
-	
-	// changeTheme();
-	
+	});	
 });
 
-function changeTheme() {
-	var intervalId = window.setInterval(function(){
-		document.documentElement.style.setProperty("--color", colors[selectedColor]);
-		if(selectedColor < colors.length) {
-			selectedColor++;
-		}
-		else {
-			selectedColor = 0;
-		}
-
-	}, 5000);
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }

@@ -29,6 +29,12 @@
 					else if($_GET["error"]=="wronglogin") {
 						echo "<br><p>Bad login information !</p>";
 					}
+					else if($_GET["error"]=="stmtfailed") {
+						echo "<br><p>Error in database, Restart !</p>";
+					}
+					else if($_GET["error"]=="noresult") {
+						echo "<br><p>Your account is no longer valid!<br>Please Create a new one.</p>";
+					}
 				}
 			?>
 		</div>
