@@ -1,7 +1,9 @@
 <?php
 	if(isset($_POST["submit"])) {
 
-		session_start();
+		if(!isset($_SESSION)) { 
+			session_start(); 
+		}
 
 		$cat = $_POST["category"];
 		$name = $_POST["name"];
@@ -9,6 +11,7 @@
 		$desc = $_POST["description"];
 		$file1 = $_FILES["image1"];
 		$sellerid = $_SESSION["userid"];
+		$username = $_SESSION["useruid"];
 
 		require_once "databasehandler.inc.php";
 		require_once "functions.inc.php";
@@ -48,7 +51,7 @@
 			exit();
 		}
 
-		createItem($conn,  $cat, $name, $price, $desc, $file1, $sellerid);
+		createItem($conn,  $cat, $name, $price, $desc, $file1, $sellerid, $username);
 	}
 	else {
 		header("location: ../sell.php");

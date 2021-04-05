@@ -2,6 +2,10 @@
 
 	if(isset($_POST["submit"])) {
 
+		if(!isset($_SESSION)) { 
+			session_start(); 
+		}
+
 		$cat = $_POST["category"];
 		$name = $_POST["name"];
 		$price = intval($_POST["price"]);
@@ -9,6 +13,7 @@
 		$file1 = $_FILES["image1"];
 		$date = $_POST["date"];
 		$sellerid = $_SESSION["userid"];
+		$username = $_SESSION["useruid"];
 
 		require_once "databasehandler.inc.php";
 		require_once "functions.inc.php";
@@ -53,7 +58,7 @@
 			exit();
 		}
 
-		createAuction($conn,  $cat, $name, $price, $desc, $file1, $date, $sellerid);
+		createAuction($conn,  $cat, $name, $price, $desc, $file1, $date, $sellerid, $username);
 	}
 	else {
 		header("location: ../sell.php");

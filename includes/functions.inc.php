@@ -114,6 +114,8 @@
 		mysqli_stmt_execute($_stmt);
 		mysqli_stmt_close($_stmt);
 
+		createStocks($conn, $username);
+
 		header("location: ../signup.php?error=none");
 		exit();
 	}
@@ -155,7 +157,9 @@
 
 	function getUserInfo($conn, $username) {
 
-		session_start();
+		if(!isset($_SESSION)) { 
+			session_start(); 
+		}
 		$stmt = getUserInfoTable($conn, "buyers");
 
 		mysqli_stmt_bind_param($stmt, "s", $username);
@@ -327,7 +331,7 @@
 		return $result;
 	}
 
-	function createItem($conn,  $cat, $name, $price, $desc, $file, $sellerid) {
+	function createItem($conn,  $cat, $name, $price, $desc, $file, $sellerid, $username) {
 		$itemKey = uniqid($sellerid,true); //same as : $sellerid.uniqid(true)
 
 		$sql = "INSERT INTO items (itemsId, itemsCat, itemsName, itemsPrice, itemsDesc, itemsImgs) VALUES (?,?,?,?,?,?);";
@@ -359,11 +363,13 @@
 		mysqli_stmt_execute($_stmt);
 		mysqli_stmt_close($_stmt);
 
+		addToStocks($conn, $username, $itemKey);
+
 		header("location: ../sell.php?error=none");
 		exit();
 	}
 
-	function createOffer($conn,  $cat, $name, $price, $desc, $file, $sellerid) {
+	function createOffer($conn,  $cat, $name, $price, $desc, $file, $sellerid, $username) {
 		$itemKey = uniqid($sellerid,true); //same as : $sellerid.uniqid(true)
 
 		$sql = "INSERT INTO items (itemsId, itemsCat, itemsName, itemsPrice, itemsDesc, itemsImgs) VALUES (?,?,?,?,?,?);";
@@ -396,11 +402,13 @@
 		mysqli_stmt_execute($_stmt);
 		mysqli_stmt_close($_stmt);
 
+		addToStocks($conn, $username, $itemKey);
+
 		header("location: ../sell.php?error=none");
 		exit();
 	}
 
-	function createAuction($conn,  $cat, $name, $price, $desc, $file, $date, $sellerid) {
+	function createAuction($conn,  $cat, $name, $price, $desc, $file, $date, $sellerid, $username) {
 		$itemKey = uniqid($sellerid,true); //same as : $sellerid.uniqid(true)
 
 		$sql = "INSERT INTO items (itemsId, itemsCat, itemsName, itemsPrice, itemsDesc, itemsImgs) VALUES (?,?,?,?,?,?);";
@@ -430,6 +438,8 @@
 		mysqli_stmt_bind_param($_stmt, "ss", $itemKey, $date);
 		mysqli_stmt_execute($_stmt);
 		mysqli_stmt_close($_stmt);
+
+		addToStocks($conn, $username, $itemKey);
 
 		header("location: ../sell.php?error=none");
 		exit();
@@ -472,6 +482,50 @@
 		$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
 		mysqli_stmt_bind_param($stmt, "sss", $email, $hashedPwd, $username);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+	}
+
+	function addToStocks($conn, $username, $itemKey) {
+		$sql = "UPDATE stocks SET stocksItemsIds = ? WHERE stocks.stocksUsername = ?;";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: ../sell.php?error=stmtfailed");
+			exit();
+		}
+
+		///////////////////
+		$_sql = "SELECT stocksItemsIds FROM stocks WHERE stocksUsername = ?;";
+		$_stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($_stmt, $_sql)) {
+			header("location: ../sell.php?error=stmtfailed");
+			exit();
+		}
+
+		mysqli_stmt_bind_param($_stmt, "s", $username);
+		mysqli_stmt_execute($_stmt);
+
+		$resultData = mysqli_stmt_get_result($_stmt);
+		$row = mysqli_fetch_assoc($resultData);
+		mysqli_stmt_close($_stmt);
+		///////////////////
+
+		$items = $row["stocksItemsIds"].":".$itemKey;
+
+		mysqli_stmt_bind_param($stmt, "ss", $items, $username);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+	}
+
+	function createStocks($conn, $username) {
+		$sql = "INSERT INTO stocks (stocksUsername, stocksItemsIds) VALUES (?,?);";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: ../login.php?error=stmtfailed");
+			exit();
+		}
+		$nostring = "";
+		mysqli_stmt_bind_param($stmt, "ss", $username, $nostring);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 	}
